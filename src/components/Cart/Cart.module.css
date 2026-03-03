@@ -1,0 +1,401 @@
+.cart_container{
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 30px auto;
+    color: white;
+}
+
+.cart_track{
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    border-radius: 32px;
+
+}
+
+.cart_track hr{
+    width: 100%;
+}
+
+.cart_title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cartTrack hr{
+    width: 100%;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+
+.cart_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    background: #171F1A;
+    color: white;
+    border-radius: 16px;
+}
+
+.cart_card img{
+    width: 100px;
+    height: 150px;
+    border-radius: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.card_desc{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 80%;
+}
+
+.card_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card_title h1{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.features_card{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.features_card svg{
+    cursor: pointer;
+}
+
+
+.favours{
+    max-width: 40px;
+    cursor: pointer;
+    fill: white;
+    stroke:black ;
+    transition: all 300ms ease;
+}
+
+.favours.active{
+    fill: red;
+    stroke: red;
+    animation: sendToFavour 200ms ease forwards;
+}
+
+@keyframes sendToFavour {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.trashbacket{
+    cursor: pointer;
+    transition: all 300ms ease;
+    &:hover{
+    color:red;
+    animation: shake 300ms ease;
+    }
+}
+
+@keyframes shake{
+    0%{transform: rotate(0);}
+    25%{transform: rotate(10deg);}
+    50%{transform: rotate(-10deg)}
+    75%{transform: rotate(10deg)}
+    100%{transform: rotate(0);}
+}
+
+.parameters{
+    display: flex;
+    height: 100%;
+    
+}
+
+.parameter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    height: 100%;
+    border-left:1px solid white;
+    width: 100px;
+    padding: 0 10px 0 10px;
+}
+
+.parameter h1{
+    width: 100%;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.parameter p{
+    font-size: 20px;
+}
+
+.parameter.card_counter p{
+    font-size: 14px;
+}
+
+
+.card_counter{
+    flex-direction: row;
+    gap: 10px;
+}
+
+.card_counter button{
+    background: none;
+    border: 0;
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 150ms ease;
+}
+
+.card_counter button:active{
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+.cartResult{
+    background: white;
+    max-height: max-content;
+    margin-top: 10px;
+    padding: 20px 20px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartResult div{
+    display: flex;
+    flex-direction: column;
+}
+
+.cartResult p{
+    margin: 0;
+}
+
+.cartResult a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:  0px;
+    font-size: 16px;
+    border-radius: 32px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    height: 100%;
+    width: 100%;
+    max-width: 50%;
+}
+
+
+.nothing{
+    margin:0 auto;
+    display:flex;
+    flex-direction:column; 
+    align-items:center;
+    color: white;
+}
+
+@media (max-width:1200px) {
+    .cart_container{
+        max-width: 768px;
+    }
+
+    .cart_card img{
+        margin-right: 10px;
+    }
+
+    .cart_card h1{
+        
+        max-width: max-content;
+        font-size: 14px;
+    }
+
+    .parameter h1{
+        font-size: 12px;
+        max-width: max-content;
+    }
+    
+}
+
+@media (max-width:768px) {
+    .cart_container{
+        max-width: 400px;
+    }
+
+    .cart_track{
+        padding: 30px 10px;
+    }
+
+    .card_desc{
+        flex-direction: column;
+    }
+
+    .cart_card{
+        position: relative;
+        padding: 0;
+        padding-left: 10px;
+    }
+
+    
+    .card_desc{
+        justify-content:space-around
+    }
+
+    .features_card svg{
+        max-width: 25px;
+    }
+
+    .parameters{
+        gap: 10px;
+        max-height: max-content;
+        justify-content: space-between;
+    }
+
+    .parameter{
+        width: max-content;
+        border: 0;
+        margin-bottom: 10px;
+    }
+
+    .parameter p{
+        margin: 0;
+    }
+
+    .pricePerPiece{
+        display: none;
+    }
+
+    .sumPrice{
+        position: relative;
+    }
+
+    .sumPrice h1{
+        display: none;
+    } 
+
+    .sumPrice p{
+        font-size: 20px;
+    }
+
+    .card_counter{
+        padding: 0;
+        max-width: 160px;
+    }
+
+    .card_counter p{
+        max-width: 50px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .cartResult a{
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width:425px) {
+    .cart_container{
+        max-width: 320px;
+    }
+
+
+    .cards{
+        gap: 10px;
+    }
+
+    .cart_card img{
+        max-width: 80px;
+        height: 100px;
+    }
+
+    .card_desc{
+        position: relative;
+        justify-content: flex-end;
+    }
+
+    .card_title h1{
+        font-size: 12px;
+    }
+
+    .parameter{
+        max-height: max-content;
+    }
+
+    .sumPrice{
+        position: absolute;
+        top:10px;
+        left: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .favours{
+        position: absolute;
+        top: 0;
+        right: 10px;
+    }
+
+    .trashbacket{
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+    }
+
+    .card_counter button{
+        width: 20px;
+        height: 20px;
+    }
+
+
+    .cartResult a{
+        align-self: flex-end;
+        text-align: center;
+        padding: 10px 0;
+        max-height: max-content;
+    }
+
+    .nothing h1{
+        font-size: 24px;
+    }
+}

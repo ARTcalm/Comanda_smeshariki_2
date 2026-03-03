@@ -1,0 +1,101 @@
+.headerContainer{
+    width: 100%;
+    height: 100px;
+    transition: all 500ms ease;
+    z-index: 1000;
+}
+
+
+.menu{
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+}
+
+.menu a{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    max-height: max-content;
+}
+
+#logo{
+    max-height: 80px;
+    cursor: pointer;
+}
+  
+
+.searchBar{
+    background: rgba(255, 255, 255, 0.209);
+    color: white;
+    border: 1px solid gainsboro;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 32px;
+    transition: all 300ms ease;
+}
+
+.searchBar input{
+    border: 0;
+    outline: 0;
+    background:none;
+    border-right: 1px solid gainsboro;
+    padding: 20px 0px 20px 30px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 32px 0 0 32px;
+    cursor: pointer;
+    transition: all 300ms ease;
+    &::placeholder{
+        font-family: "Widock TRIAL";
+        color: white;
+    }
+}
+
+.searchBar:focus-within{
+    background: white;
+    color: black;
+    border-color:black ;
+}
+
+.searchBar:focus-within input{
+    border-color: black;
+    &::placeholder{
+        color: black;
+    }
+}
+
+.searchBar svg{
+    margin-left: 14px;
+    cursor: pointer;
+    max-height: 28px;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    color: white;
+}
+
+.icons svg{
+    cursor: pointer;
+    max-height: 45px;
+}
+
+#profile, #cart, #favours{
+    transition: all 300ms ease;
+}
+
+#profile:hover, #cart:hover, #favours:hover{
+    transform: translateY(-5px);
+}
+
+

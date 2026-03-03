@@ -1,0 +1,28 @@
+.favoursTrack{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.nothing{
+    margin:0 auto;
+    display:flex;
+    flex-direction:column; 
+    align-items:center;
+}
+
+@media (max-width:1200px) {
+    .favoursTrack{
+        height: 100%;
+    }
+}
+
+@media (max-width:425px) {
+    .favoursTrack{
+        justify-content: center;
+    }
+    .nothing h1{
+        font-size: 24px;
+    }
+}
+

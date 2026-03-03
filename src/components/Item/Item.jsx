@@ -1,0 +1,82 @@
+import { useEffect, useState } from "react"
+import style from "./Item.module.css"
+import { basename } from "../../consts"
+
+
+export const Item = (props) => {
+
+    const {item, handleAddCart, handleFavours, handleAddRecently, cartItems,  plus, minus} = props
+    let [fullItem, setFullItem] = useState(false)
+    let [isInCart, setIsInCart] = useState(false)
+    let cartCount = cartItems.map(el => {if(el.id === item.id){return el.cartCount}})
+    
+    useEffect(() => {
+        const isInArray = cartItems.some(el => el.id === item.id)
+        if(isInArray){
+            setIsInCart(true)
+        }
+        else{
+            setIsInCart(false)
+        }
+    }, [cartItems])
+
+    useEffect(() => {
+        if(fullItem){document.body.style.overflowY = "hidden"}
+        else{document.body.style.overflowY = "scroll"}
+    },[fullItem])
+
+    return(
+        <div className={style.item_card} >
+            <svg className={`${style.favours} ${item.favours ? style.active : ''}`} onClick={() => handleFavours(item)} viewBox="0 0 1024 1024"><path fill="current" stroke="current" strokeWidth={"30px"} d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8a264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39c-10 6.1-19.5 12.8-28.5 20.1c-9-7.3-18.5-14-28.5-20.1c-41.8-25.5-89.9-39-139.2-39c-35.5 0-69.9 6.8-102.4 20.3c-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9c0 33.3 6.8 68 20.3 103.3c11.3 29.5 27.5 60.1 48.2 91c32.8 48.9 77.9 99.9 133.9 151.6c92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3c56-51.7 101.1-102.7 133.9-151.6c20.7-30.9 37-61.5 48.2-91c13.5-35.3 20.3-70 20.3-103.3c.1-35.3-7-69.6-20.9-101.9"></path></svg> 
+            <p className={style.itemPrice}>{item.price}₽</p>
+            <div className={style.item_information}>
+                <div className={style.item_image}>
+                    <img src={`${basename}${item.image}`} onClick={() => {setFullItem(fullItem = !fullItem), handleAddRecently(item)}} />
+                </div>
+                <div className={style.item_text}>
+                    <p className={style.storageCount} >{item.storage === 0? "Нет в наличии":"Количество на складе: " + item.storage}</p>
+                    <h1>{item.name}</h1>
+                    {!isInCart
+                    ?
+                    <div className={style.addCartButton} onClick={() => handleAddCart(item)}>В КОРЗИНУ <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_128_11)"><path d="M16.1916 3.0122C16.35 3.1071 16.4883 3.23228 16.5983 3.38061C16.7084 3.52894 16.7882 3.69751 16.8331 3.87667C16.878 4.05584 16.8872 4.2421 16.8602 4.42482C16.8331 4.60754 16.7703 4.78313 16.6753 4.94157L9.51469 16.875H35.4853L28.3219 4.94157C28.1302 4.62157 28.0734 4.23853 28.1642 3.8767C28.2549 3.51487 28.4856 3.2039 28.8056 3.0122C29.1256 2.8205 29.5087 2.76377 29.8705 2.85449C30.2323 2.94521 30.5433 3.17595 30.735 3.49595L38.7647 16.875H42.1875C42.9334 16.875 43.6488 17.1713 44.1762 17.6988C44.7037 18.2262 45 18.9416 45 19.6875V22.5C45 23.2459 44.7037 23.9613 44.1762 24.4887C43.6488 25.0162 42.9334 25.3125 42.1875 25.3125V37.9688C42.1875 39.8336 41.4467 41.622 40.1281 42.9406C38.8095 44.2592 37.0211 45 35.1562 45H9.84375C7.97895 45 6.19052 44.2592 4.87191 42.9406C3.55329 41.622 2.8125 39.8336 2.8125 37.9688V25.3125C2.06658 25.3125 1.35121 25.0162 0.823762 24.4887C0.296316 23.9613 0 23.2459 0 22.5V19.6875C0 18.9416 0.296316 18.2262 0.823762 17.6988C1.35121 17.1713 2.06658 16.875 2.8125 16.875H6.23531L14.2594 3.49595C14.3543 3.33748 14.4795 3.19925 14.6278 3.08917C14.7761 2.97909 14.9447 2.89931 15.1238 2.85439C15.303 2.80946 15.4893 2.80028 15.672 2.82736C15.8547 2.85443 16.0331 2.91724 16.1916 3.0122ZM5.625 25.3125V37.9688C5.625 39.0876 6.06947 40.1607 6.86064 40.9519C7.65181 41.743 8.72487 42.1875 9.84375 42.1875H35.1562C36.2751 42.1875 37.3482 41.743 38.1394 40.9519C38.9305 40.1607 39.375 39.0876 39.375 37.9688V25.3125H5.625ZM2.8125 19.6875V22.5H42.1875V19.6875H2.8125ZM11.25 28.125C11.623 28.125 11.9806 28.2732 12.2444 28.5369C12.5081 28.8006 12.6562 29.1583 12.6562 29.5313V37.9688C12.6562 38.3417 12.5081 38.6994 12.2444 38.9631C11.9806 39.2269 11.623 39.375 11.25 39.375C10.877 39.375 10.5194 39.2269 10.2556 38.9631C9.99191 38.6994 9.84375 38.3417 9.84375 37.9688V29.5313C9.84375 29.1583 9.99191 28.8006 10.2556 28.5369C10.5194 28.2732 10.877 28.125 11.25 28.125ZM16.875 28.125C17.248 28.125 17.6056 28.2732 17.8694 28.5369C18.1331 28.8006 18.2812 29.1583 18.2812 29.5313V37.9688C18.2812 38.3417 18.1331 38.6994 17.8694 38.9631C17.6056 39.2269 17.248 39.375 16.875 39.375C16.502 39.375 16.1444 39.2269 15.8806 38.9631C15.6169 38.6994 15.4688 38.3417 15.4688 37.9688V29.5313C15.4688 29.1583 15.6169 28.8006 15.8806 28.5369C16.1444 28.2732 16.502 28.125 16.875 28.125ZM22.5 28.125C22.873 28.125 23.2306 28.2732 23.4944 28.5369C23.7581 28.8006 23.9062 29.1583 23.9062 29.5313V37.9688C23.9062 38.3417 23.7581 38.6994 23.4944 38.9631C23.2306 39.2269 22.873 39.375 22.5 39.375C22.127 39.375 21.7694 39.2269 21.5056 38.9631C21.2419 38.6994 21.0938 38.3417 21.0938 37.9688V29.5313C21.0938 29.1583 21.2419 28.8006 21.5056 28.5369C21.7694 28.2732 22.127 28.125 22.5 28.125ZM28.125 28.125C28.498 28.125 28.8556 28.2732 29.1194 28.5369C29.3831 28.8006 29.5312 29.1583 29.5312 29.5313V37.9688C29.5312 38.3417 29.3831 38.6994 29.1194 38.9631C28.8556 39.2269 28.498 39.375 28.125 39.375C27.752 39.375 27.3944 39.2269 27.1306 38.9631C26.8669 38.6994 26.7188 38.3417 26.7188 37.9688V29.5313C26.7188 29.1583 26.8669 28.8006 27.1306 28.5369C27.3944 28.2732 27.752 28.125 28.125 28.125ZM33.75 28.125C34.123 28.125 34.4806 28.2732 34.7444 28.5369C35.0081 28.8006 35.1562 29.1583 35.1562 29.5313V37.9688C35.1562 38.3417 35.0081 38.6994 34.7444 38.9631C34.4806 39.2269 34.123 39.375 33.75 39.375C33.377 39.375 33.0194 39.2269 32.7556 38.9631C32.4919 38.6994 32.3438 38.3417 32.3438 37.9688V29.5313C32.3438 29.1583 32.4919 28.8006 32.7556 28.5369C33.0194 28.2732 33.377 28.125 33.75 28.125Z" fill="currentColor"/></g><defs><clipPath id="clip0_128_11"><rect width="45" height="45" fill="currentColor"/></clipPath></defs></svg></div>
+                    :
+                    <div className={style.cartCountButtons}>
+                        <button onClick={() => plus(item)}>+</button>
+                            <span>{cartCount}</span>
+                        <button onClick={() => minus(item)}>-</button>
+                    </div>   
+                    }
+                </div>
+            </div>   
+            {fullItem && (
+                <div className={style.fullItemBG} >
+                    <div style={{cursor:"pointer",width:"100vw", height:"100vh", position:"absolute", zIndex:"0"}} onClick={() => setFullItem(fullItem = !fullItem)}></div>
+                    <div className={style.fullItemContainer}>
+                        <div className={style.fullItemImageContainer}>
+                            <svg className={`${style.favours} ${item.favours ? style.active : ''}`} onClick={() => handleFavours(item)} viewBox="0 0 1024 1024"><path fill="current" stroke="current" strokeWidth={"30px"} d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8a264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39c-10 6.1-19.5 12.8-28.5 20.1c-9-7.3-18.5-14-28.5-20.1c-41.8-25.5-89.9-39-139.2-39c-35.5 0-69.9 6.8-102.4 20.3c-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9c0 33.3 6.8 68 20.3 103.3c11.3 29.5 27.5 60.1 48.2 91c32.8 48.9 77.9 99.9 133.9 151.6c92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3c56-51.7 101.1-102.7 133.9-151.6c20.7-30.9 37-61.5 48.2-91c13.5-35.3 20.3-70 20.3-103.3c.1-35.3-7-69.6-20.9-101.9"></path></svg> 
+                            <img src={`${basename}${item.image}`} className={style.FullItemImg} onClick={() => setFullItem(fullItem = !fullItem)} />
+                        </div>
+                        <div className={style.fullItemTextContainer}>
+                            <div className={style.fullItemTitleContainer}>
+                                <h1 className={style.name}>{item.title}</h1>
+                                <svg width="16" height="16" viewBox="0 0 16 16"><path fill="currentColor" d="M8 9.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3"></path></svg>
+                                <h1 className={style.category}>{item.category}</h1> 
+                            </div>
+                            <div className={style.fullItemName}>{item.name}</div>
+                            <div className={style.fullItemDesc}>
+                                <h1>КАКАЯ ТО ИНФОРМАЦИЯ О ТОВАРЕ</h1>
+                            </div>
+                            <div className={style.fullItemBottomPanel}>
+                                <p style={{fontWeight:"500", marginTop:"20px", marginBottom:"20px",color:item.storage < 50? "red" : item.storage > 50 && item.storage < 200 ? "orange": "green" }}>{item.storage === 0? "Нет в наличии":"Количество на складе: " + item.storage}</p>
+                                <div>
+                                    <p className={style.fullItemPrice}>{item.price} ₽</p>
+                                    <button onClick={() => handleAddCart(item)} className={style.addToCartButton} >В КОРЗИНУ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
+}

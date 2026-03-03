@@ -1,0 +1,219 @@
+.orderCard{
+    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    color: white;
+    border-radius: 16px;
+}
+
+.topPanel{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 0 20px;
+}
+
+.topPanel div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.chevron{
+    z-index: 999;
+    transition: all 300ms ease;
+}
+
+.chevron.active{
+    transform: rotate(180deg);
+}
+
+.chevron.noactive{
+    transform: rotate(0deg);
+}
+
+
+
+
+.orderItemsContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 20px 20px;   
+}
+
+.orderItemsContainer table{
+    width: 100%;
+    gap:10px
+}
+
+.orderItemsContainer table tr{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 16px;
+    padding: 10px 0; 
+}
+
+.orderItemsContainer table tr td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.itemsCard{
+    background: white;
+    color: black;
+}
+
+.itemsCard img{
+    max-width: 60px;
+    border-radius: 8px;
+}
+
+
+
+.orderInfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.orderInfo h2{
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.adressInfo{
+    width: 49%;
+}
+
+.contactInfo{
+    position: relative;
+    width: 49%;
+    height: 100%;
+}
+
+
+.contactInfo .fields{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.noticeInfo{
+    width:100%;
+}
+
+.noticeInfo .fields textarea{
+    width: 100%;
+    margin: 0;
+    background: white;
+    color: black;
+    border: 4px solid #7E9989;
+    padding: 5px 10px;
+    border-radius: 8px;
+    max-width: 100%;
+    overflow-y: scroll;
+    height:200px;
+    resize: none;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.noticeInfo .fields textarea::-webkit-scrollbar{
+    appearance: none;
+    background: black;
+    width: 5px;
+    padding: 5px;
+    border-radius: 32px;
+}
+
+.noticeInfo .fields textarea::-webkit-scrollbar-track{
+    background: rgb(255, 255, 255);
+    border-radius: 32px;
+}
+
+.noticeInfo .fields textarea::-webkit-scrollbar-thumb{
+    background: black;
+    border-radius: 32px;
+}
+
+
+.fields{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    background: white;
+    color: black;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.floorNumField, .apartNumField, .telField, .emailField{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.adressField{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+.floorNumField, .apartNumField{
+    width: 30%;
+}
+
+.fields div p{
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.fields div a{
+    min-height: 17px;
+    background: white;
+    color: black;
+    border: 4px solid #7E9989;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+@media (max-width:768px) {
+    .orderInfo h2{
+        max-width: max-content;
+        font-size: 20px;
+    }
+    .adressInfo, .contactInfo{
+        width: 100%;
+    }
+}
+
+@media (max-width:425px) {
+
+    .orderCard{
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .topPanel{
+        font-size: 10px;
+    }
+
+    .orderItemsContainer table tr td{
+        font-size: 8px;
+        margin-bottom: 0;
+    }
+
+    .itemsCard img{
+        max-width: 40px;
+        border-radius: 8px;
+    }
+
+
+}

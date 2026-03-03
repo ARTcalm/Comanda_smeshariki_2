@@ -1,0 +1,29 @@
+.slidebar{
+    background: white;
+    color: black;
+    width: 100%;
+    padding: 26px 0;
+    border-radius: 64px;
+    overflow: hidden;
+}
+
+.sliderContent{
+    white-space: nowrap;
+    display: inline-flex;
+    gap: 40px;
+    animation: ticker 20s linear infinite;
+}
+
+.slideText{
+    font-size: 32px;
+    font-family: "KOT Eitai";
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

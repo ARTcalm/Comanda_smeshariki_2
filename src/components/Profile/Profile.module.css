@@ -1,0 +1,83 @@
+.personalCabinetBG{
+    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    max-width: 1200px;
+    margin: 30px auto;
+    min-height: 600px;
+    display: flex;
+    border-radius: 32px ;
+}
+
+.sideBarMenu{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    gap: 20px;
+    padding: 10px;
+    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    border-radius: 16px 0 0 16px;
+}
+
+.buttonMenu{
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    border-radius: 16px;
+    background: white;
+    transition: all 300ms ease;
+    &:hover{
+        background: rgba(255, 255, 255, 0.756);
+    }
+}
+
+.display{
+    padding: 20px ;
+    background: white;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 16px 16px 0;
+}
+
+@media (max-width:1200px) {
+    .personalCabinetBG{
+        max-width: 768px;
+        flex-direction: column;
+        padding: 0 0 20px 0;
+        border-radius: 16px;
+    }
+    .sideBarMenu{
+        width: 100%;
+        flex-direction: row;
+        padding: 0;
+        border-radius: 16px 16px 0 0;
+        gap: 0;
+    }
+
+    .buttonMenu{
+        margin: 10px;
+        width: 100%;
+    }
+    .display{
+        min-height: 70vh;
+        padding: 0;
+        border-radius: 0 0 16px 16px;
+    }
+}
+
+
+@media (max-width:400px) {
+    .personalCabinetBG{
+        max-width: 320px;
+        padding: 10px;
+    }
+
+    .sideBarMenu{
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 10px;
+    }
+    .buttonMenu{
+        padding: 20px 0;
+        margin: 0;
+    }
+}

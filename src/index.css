@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@font-face {
+    font-family:'Widock TRIAL';
+    src: local('Widock TRIAL'), url('/CommandWorks/CP2/fonts/Widock TRIAL Bold.otf') format('otf');
+}
+
+@font-face {
+    font-family: "KOT Eitai";
+    src: local('KOT Eitai'), url('/CommandWorks/CP2/fonts/KOT Eitai.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: "Nissan Brand";
+    src: local('Nissan Brand'), url('/CommandWorks/CP2/fonts/nissanbrand_bold.otf') format('otf');  
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "Nissan Brand";
+    src: local('Nissan Brand'), url('/CommandWorks/CP2/fonts/nissanbrand_regular.otf') format('otf');  
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+body{
+    background: linear-gradient(0deg, #004165,#0083CB);
+    background-size: 300% 300%;
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    animation: backgroundAnim 10s ease infinite;
+}
+
+@keyframes backgroundAnim {
+    0%{background-position: 0% 0%;}
+    25%{background-position: 50% 100%;}
+    50%{background-position: 0% 100%;}
+    100%{background-position:0% 0% ;}
+}
+
+.main{
+    min-height: 100vh;
+    max-width: 1200px;
+    color: white;
+    margin:30px auto;
+}

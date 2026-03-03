@@ -1,0 +1,252 @@
+.item_card{
+    position: relative;
+    background: rgba(255,255,255, 0.4);
+    border-radius: 17px;
+    max-width: 280px;
+    max-height: 600px;
+    border: 1px solid rgba(255,255,255, 0.4);
+}
+
+.item_information{
+    display: flex;
+    flex-direction: column;
+}
+
+.item_image{
+    border-radius: 16px;
+    width: 280px;
+    height: 370px;
+    background: white;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.126);
+}
+
+.item_image img{
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+    border-radius: 12px 12px 0 0;
+    transition: all 500ms ease;
+}
+
+
+
+
+.item_text{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    min-height: 170px;
+    color: white;
+    font-family: "KOT Eitai";
+    font-weight: bold;
+}
+
+.item_text h1{
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: white;
+}
+
+.itemPrice{
+    margin: 0;
+    position: absolute;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 32px;
+    top: 10px;
+    left: 10px;
+    font-family: "KOT Eitai";
+    font-size: "11px";
+    background: linear-gradient(45deg, #004165,#0083CB);
+}
+
+.storageCount{
+    font-size:12px;
+    font-weight:500;
+    display: flex; 
+    margin: 0;
+    margin-bottom: 5px;
+    color: inherit;
+    font-family: inherit;
+}
+
+
+.addCartButton, .cartCountButtons{
+    margin-top: auto;
+    background: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: black;
+    outline: 0;
+    border: 0;
+    border: 1px solid gainsboro;
+    height: 30px;
+    width: 100%;
+    padding: 5px 0;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.addCartButton svg{
+    max-width: max-content;
+    max-height: 30px;
+}
+
+
+
+
+
+.item_card .favours{
+    z-index: 800;
+    position: absolute;
+    max-width: 30px;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    fill: white;
+    stroke:black ;
+    transition: all 300ms ease;
+
+}
+
+.item_card .favours.active{
+    fill: red;
+    stroke: red;
+    animation: sendToFavour 200ms ease forwards;
+}
+
+@keyframes sendToFavour {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.fullItemBG {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.76);
+    z-index: 9999;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+.fullItemContainer{
+    max-width: 1200px;
+    max-height: 700px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    padding: 20px 40px;
+    border-radius: 16px;
+    z-index: 9999;
+}
+
+.fullItemImageContainer{
+    position: relative;
+    box-shadow: 1px 1px 15px  rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
+    max-width: 400px;
+    height: 600px;
+}
+
+.fullItemImageContainer img{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 16px;
+
+}
+
+.fullItemTextContainer{
+    display: flex;
+    flex-direction: column;
+    background: white;
+    color: black;
+    padding: 20px 20px;
+    border-radius: 16px;
+    min-width: 500px;
+}
+
+.fullItemTitleContainer{
+    display: flex;
+    gap:0px;
+    color: gray;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.fullItemTitleContainer h1{
+    font-size: 12px;
+    margin: 0;
+}
+
+.fullItemName{
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.fullItemDesc{
+    background: rgb(241, 241, 241);
+    border-radius: 16px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullItemDesc h1{
+    text-align: center;
+    font-size: 24px;
+    max-width: min-content;
+}
+
+.fullItemBottomPanel{
+    margin-top: auto;
+}
+
+.fullItemBottomPanel div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fullItemPrice{
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.addToCartButton{
+    background: none;
+    border: 0;
+    outline: 0;
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    color: white;
+    width: 50%;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 32px;
+}
+

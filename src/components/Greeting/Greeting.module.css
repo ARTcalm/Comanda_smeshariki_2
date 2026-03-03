@@ -1,0 +1,89 @@
+.title{
+    font-family: "Widock TRIAL";
+    font-size: 36px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.panels{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+
+.panel.left{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 590px;
+    grid-template-rows: 330px 260px;
+}
+
+.panel.right{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 590px;
+    grid-template-rows: 260px 330px;    
+}
+
+.block{
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.panel img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popUp{
+    position: absolute;
+    padding: 15px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    transform: translateY(-100%);
+    animation: popUpUnactive 0.5s ease forwards;
+}
+
+.popUp h1, .popUp h2, .popUp p{
+    font-family: "Nissan Brand";
+    margin: 0;
+}
+
+.popUp h2{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.popUp p{
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.block:hover .popUp{
+    animation: popUpActive 0.5s ease forwards ;
+}
+
+@keyframes popUpActive{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+@keyframes popUpUnactive{
+    0%{
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+}

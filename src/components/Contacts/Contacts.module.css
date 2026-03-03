@@ -1,0 +1,85 @@
+.contactsBG{
+    margin: 30px auto;
+    border-radius: 32px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(0deg, #378D5A, #27332C);
+    color: white;
+}
+
+.contactsBG h1{
+    padding-left: 20px;
+}
+
+.contactsBG hr{
+    max-width: 90%;
+}
+
+.panels{
+    padding: 30px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.panels h1{
+    margin-bottom:0 ;
+}
+
+.panels hr{
+    max-width: 100%;
+}
+
+
+.panel.left{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 49%;
+}
+
+.panel.left h1{
+    padding: 0;
+}
+
+.contactInfo{
+    background: linear-gradient(-45deg, #378D5A, #27332C);
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.464);
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 16px;
+}
+
+
+
+.panel.right{
+    min-height: 300px;
+    width: 49%;
+}
+
+.panel.right iframe{
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+}
+
+@media (max-width:1200px) {
+    .contactsBG{
+        max-width: 768px;
+    }
+
+    .panels{
+        padding: 20px 10px 40px 10px;
+    }
+
+    .panel.left, .panel.right{
+        width: 100%;
+    }
+
+    .panel.right{
+        min-height: 600px;
+    }
+
+}

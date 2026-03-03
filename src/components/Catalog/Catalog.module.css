@@ -1,0 +1,70 @@
+#title{
+    font-family: "KOT Eitai";
+    font-size: 32px;
+}
+
+.items{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+
+.containerClassName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+}
+
+.pageClassName{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    transition: all 300ms ease;
+    cursor: pointer;
+    color: white;
+    list-style: none;
+    font-family: "KOT Eitai";
+    font-size: 32px;
+}
+
+.pageClassName:hover{
+    transform: scale(1.1) ;
+}
+
+.pageLinkClassName{
+    position: relative;
+}
+
+.pageLinkClassName{
+    position: relative;
+    padding: 0px 10px 0px 10px;
+}
+
+.previousContainer, .nextContainer, .break{
+    list-style: none;
+    cursor: pointer;
+}
+
+.previousContainer, .nextContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    color: black;
+    background: white;
+    border-radius: 16px;
+    transition: all 300ms ease;
+    font-family: "Nissan Brand";
+    font-weight: bold;
+    &:active{
+        transform: scale(1.1);
+    }
+}
