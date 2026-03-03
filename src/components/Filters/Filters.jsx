@@ -16,17 +16,25 @@ export const Filters = (props) => {
     const availableSorting = [{key:"increasing", name:"По возрастанию: Цена"}, {key:"decreasing", name:"По убыванию: Цена"}]
     useEffect(() => {
         setSearchedItems(prev => {
-            if(activeModel === null){
+            if(activeModel === null && activeCategory === null){
                 return items.map(el => {
                     return el
                 })
             }
-            else{
+            else if(activeModel !== null && activeCategory === null){
                 const filteredItems = items.filter(el => el.carModel === activeModel)
                 return [...filteredItems]
             }
+            else if(activeModel === null && activeCategory !== null){
+                const filteredItems = items.filter(el => el.category === activeCategory)
+                return [...filteredItems]
+            }
+            else{
+                const filteredItems = items.filter(el => el.carModel === activeModel && el.category === activeCategory)
+                return [...filteredItems]
+            }
         })
-    }, [activeModel])
+    }, [activeModel, activeCategory])
 
 
     return(
@@ -42,8 +50,8 @@ export const Filters = (props) => {
                 <ul className={style.filterOption} style={{display:modelOpen?"flex":"none"}}>
                     {availableModels.map(el => (
                         <>
-                        <li onClick={()=>{setActiveModel(el), setModelOpen(modelOpen = !modelOpen)}}>{el}</li>
-                        <div onClick={() => {setActiveModel(null), setModelOpen(modelOpen = !modelOpen)}}>X</div>
+                            <li onClick={()=> setActiveModel(el) }>{el}</li>
+                            {activeModel === el?<div className={style.closeButton} onClick={() => {setActiveModel(null), setModelOpen(modelOpen = !modelOpen)}}>X</div>:""}
                         </>
                     ))}
                 </ul>
@@ -58,7 +66,10 @@ export const Filters = (props) => {
                 </div>
                 <ul className={style.filterOption} style={{display:categoryOpen?"flex":"none"}}>
                     {availableCategory.map(el => (
-                        <li onClick={()=>setActiveCategory(el)}>{el}</li>
+                        <>
+                            <li onClick={()=> setActiveCategory(el) }>{el}</li>
+                            {activeCategory === el?<div className={style.closeButton} onClick={() => {setActiveCategory(null), setCategoryOpen(categoryOpen = !categoryOpen)}}>X</div>:""}
+                        </>
                     ))}
                 </ul>  
             </div>
@@ -72,7 +83,7 @@ export const Filters = (props) => {
                 </div>
                 <ul className={style.filterOption} style={{display:sortingOpen?"flex":"none"}}>
                     {availableSorting.map(el => (
-                        <li key={el.key} onClick={()=> {setActiveSorting(el.name), setSortingOpen(false)}} > {el.name}</li>
+                        <li key={el.key} onClick={()=> setActiveSorting(el.name) } > {el.name}</li>
                     ))}
                 </ul>  
             </div>

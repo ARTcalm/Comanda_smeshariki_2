@@ -101,17 +101,27 @@ export const Routers = () => {
         })
     }
     const minus = (item) =>{
-        setCartItems(cartItems => {
-        return cartItems.map(el => {
+        cartItems.map(el => {
             if(el.id === item.id){
-                return {
-                ...el,
-                cartCount: el.cartCount - 1 > 1 ? el.cartCount - 1 : 1
+                if(el.cartCount > 1){
+                    setCartItems(prev => {
+                        return prev.map(prevEl => {
+                            if(prevEl.id === el.id){
+                                return {
+                                    ...prevEl,
+                                    cartCount: prevEl.cartCount-1
+                                }
+                            }
+                            return prevEl
+                        })
+                    })
+                }
+                else{
+                    setCartItems(cartItems => cartItems.filter(el => el.id !== item.id))
+                }
             }
-        }
-            return el
-        })}
-    )}
+        })
+    }
 
     useEffect(() => {
         window.scrollTo(0,0)
