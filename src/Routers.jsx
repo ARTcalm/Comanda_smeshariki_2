@@ -154,7 +154,7 @@ export const Routers = () => {
 
     return(
         <>
-        <Header searchedItems={searchedItems} setSearchedItems={setSearchedItems} cartItems={cartItems} favoursItems={favoursItems} />        
+        <Header items={items} cartItems={cartItems} favoursItems={favoursItems} />        
         <div className="main" >
             <Routes>
                 <Route index element={<Catalog items={items} setItems={setItems} searchedItems={searchedItems} setSearchedItems={setSearchedItems} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} plus={plus} minus={minus} cartItems={cartItems} />} />
