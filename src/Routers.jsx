@@ -14,6 +14,10 @@ import { OrdersDisplay } from "./components/Profile/Displays/OrderDisplay/Orders
 import { ProfileDisplay } from "./components/Profile/Displays/ProfileDisplay/ProfileDisplay";
 import { Contacts } from "./components/Contacts/Contacts";
 import { AdminPanel } from "./components/AdminPanel/AdminPanel";
+import { AdminStatisticDisplay } from "./components/AdminPanel/Displays/StatisticDisplay/AdminStatisticDisplay";
+import { AdminGoodsDisplay } from "./components/AdminPanel/Displays/GoodsDisplay/AdminGoodsDisplay";
+import { AdminOrdersDisplay } from "./components/AdminPanel/Displays/OrdersDisplay/AdminOrdersDisplay";
+import { AdminCategoriesDisplay } from "./components/AdminPanel/Displays/CategoriesDisplay/AdminCategoriesDisplay";
 
 export const Routers = () => {
 
@@ -171,15 +175,15 @@ export const Routers = () => {
                 </Route>
                 <Route path={"cart"}>
                     <Route index element={<Cart cartItems={cartItems} handleFavours={handleFavours} handleAddRecently={handleAddRecently} DeleteCartItems={DeleteCartItems} plus={plus} minus={minus} />} />
-                    <Route path={"delivery-form"} element={<DeliveryForm orders={orders} setOrders={setOrders} cartItems={cartItems} setCartItems={setCartItems} setItems={setItems}  plus={plus} minus={minus} DeleteCartItems={DeleteCartItems}/>} />
+                    <Route path={"delivery-form"} element={<DeliveryForm orders={orders} setOrders={setOrders} cartItems={cartItems} items={items} setCartItems={setCartItems} setItems={setItems}  plus={plus} minus={minus} DeleteCartItems={DeleteCartItems}/>} />
                     <Route path={"*"} element={<div>NICHEGO</div>} />
                 </Route>
                 <Route path={"favours"} element={<Favours favoursItems={favoursItems} cartItems={cartItems} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} plus={plus} minus={minus} />} />
                 <Route path={"admin"} element={<AdminPanel />}>
-                    <Route index element/>
-                    <Route path={"goods"} />
-                    <Route path={"orders"} />
-                    <Route path={"category"} />
+                    <Route index element={<AdminStatisticDisplay items={items} cartItems={cartItems} orders={orders} />} />
+                    <Route path={"goods"} element={<AdminGoodsDisplay />} />
+                    <Route path={"orders"} element={<AdminOrdersDisplay />} />
+                    <Route path={"categories"} element={<AdminCategoriesDisplay />} />
                 </Route>
                 <Route path={"*"} element={<div>NICHEGO</div>} />
             </Routes>

@@ -31,7 +31,7 @@ export const Item = (props) => {
                     <img src={`${basename}${item.image}`} onClick={() => {handleAddRecently(item), navigate(`/product/${item.category}/${item.id}`)}} />
                 </div>
                 <div className={style.item_text}>
-                    <p className={style.storageCount} >{item.storage === 0? "Нет в наличии":"Количество на складе: " + item.storage}</p>
+                    <p className={style.storageCount} >{item.storage === 0 ? "Нет в наличии":"Количество на складе: " + item.storage}</p>
                     <h1>{item.name}</h1>
                     {!isInCart
                     ?

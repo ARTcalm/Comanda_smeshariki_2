@@ -5,7 +5,7 @@ import { basename } from "../../consts"
 
 export const DeliveryForm = (props) => {
 
-    const {cartItems, DeleteCartItems, setItems, orders, setOrders, setCartItems,  plus, minus} = props
+    const {cartItems, DeleteCartItems, items, setItems, orders, setOrders, setCartItems,  plus, minus} = props
     let summa = 0
     let counts = 0
     cartItems.forEach(el => summa += Number.parseFloat(el.price) * el.cartCount)
@@ -171,7 +171,7 @@ export const DeliveryForm = (props) => {
             setItems(items => {
                 return items.map(item => {
                     if(item.id === el.id){
-                        return {...item, storage:item.storage - el.count < 0 ? 0 : item.storage-el.count }
+                        return {...item, storage:item.storage - el.cartCount < 0 ? 0 : item.storage-el.cartCount }
                     }
                     return item
                 })
@@ -181,6 +181,7 @@ export const DeliveryForm = (props) => {
         setCartItems([])
         navigate("/")
         alert("Заказ успешно оформлен")
+        console.log(items)
     }
 
     const handleChange = (e) => {
