@@ -1,5 +1,5 @@
 .personalCabinetBG{
-    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    background: linear-gradient(45deg, #004165,#0083CB);
     max-width: 1200px;
     margin: 30px auto;
     min-height: 600px;
@@ -13,7 +13,7 @@
     width: 25%;
     gap: 20px;
     padding: 10px;
-    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    background: #0083CB;
     border-radius: 16px 0 0 16px;
 }
 

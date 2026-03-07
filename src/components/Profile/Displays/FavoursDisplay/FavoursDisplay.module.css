@@ -2,13 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    color: black;
 }
+
+
 
 .nothing{
     margin:0 auto;
     display:flex;
     flex-direction:column; 
     align-items:center;
+    color: black;
 }
 
 @media (max-width:1200px) {

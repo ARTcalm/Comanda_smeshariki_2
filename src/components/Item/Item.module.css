@@ -1,10 +1,10 @@
 .item_card{
     position: relative;
-    background: rgba(255,255,255, 0.4);
+    background: white;
     border-radius: 17px;
     max-width: 280px;
     max-height: 600px;
-    border: 1px solid rgba(255,255,255, 0.4);
+    border: 1px solid gainsboro;
 }
 
 .item_information{
@@ -38,7 +38,7 @@
     flex-direction: column;
     padding: 10px;
     min-height: 170px;
-    color: white;
+    color: black;
     font-family: "KOT Eitai";
     font-weight: bold;
 }
@@ -47,7 +47,6 @@
     margin: 0;
     font-size: 16px;
     line-height: 24px;
-    color: white;
 }
 
 .itemPrice{
@@ -92,6 +91,7 @@
     cursor: pointer;
     font-size: 16px;
     font-family: inherit;
+    transition: all 300ms ease;
 }
 
 .addCartButton svg{
@@ -99,9 +99,40 @@
     max-height: 30px;
 }
 
+.addCartButton:hover{
+    background: #0083CB;
+    border-color: #0083CB;
+    color: white;
+}
 
+.cartCountButtons{
+    background: linear-gradient(45deg, #004165,#0083CB);
+    border-color: #0083CB;
+    color: white;
+    gap: 10px;
+    cursor: auto;
+}
 
+.cartCountButtons button{
+    height: 80%;
+    width: 30%;
+    background: none;
+    outline: none;
+    border: 0;
+    background: white;
+    border-radius: 4px;
+    font-size: calc(0.5vw + 14px);
+    transition: all 300ms ease;
+    cursor: pointer;
+    &:hover{
+        background: #eaeaea;
+    }
+}
 
+.cartCountButtons span{
+    width: 60px;
+    text-align: center;
+}
 
 .item_card .favours{
     z-index: 800;
@@ -132,121 +163,5 @@
     100%{
         transform: scale(1);
     }
-}
-
-.fullItemBG {
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.76);
-    z-index: 9999;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-    
-.fullItemContainer{
-    max-width: 1200px;
-    max-height: 700px;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    background: linear-gradient(-45deg, #378D5A, #27332C);
-    padding: 20px 40px;
-    border-radius: 16px;
-    z-index: 9999;
-}
-
-.fullItemImageContainer{
-    position: relative;
-    box-shadow: 1px 1px 15px  rgba(0, 0, 0, 0.6);
-    border-radius: 16px;
-    max-width: 400px;
-    height: 600px;
-}
-
-.fullItemImageContainer img{
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    border-radius: 16px;
-
-}
-
-.fullItemTextContainer{
-    display: flex;
-    flex-direction: column;
-    background: white;
-    color: black;
-    padding: 20px 20px;
-    border-radius: 16px;
-    min-width: 500px;
-}
-
-.fullItemTitleContainer{
-    display: flex;
-    gap:0px;
-    color: gray;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.fullItemTitleContainer h1{
-    font-size: 12px;
-    margin: 0;
-}
-
-.fullItemName{
-    margin-bottom: 10px;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.fullItemDesc{
-    background: rgb(241, 241, 241);
-    border-radius: 16px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fullItemDesc h1{
-    text-align: center;
-    font-size: 24px;
-    max-width: min-content;
-}
-
-.fullItemBottomPanel{
-    margin-top: auto;
-}
-
-.fullItemBottomPanel div{
-    display: flex;
-    justify-content: space-between;
-}
-
-.fullItemPrice{
-    font-size: 48px;
-    font-weight: 600;
-    margin: 0;
-}
-
-.addToCartButton{
-    background: none;
-    border: 0;
-    outline: 0;
-    background: linear-gradient(-45deg, #378D5A, #27332C);
-    color: white;
-    width: 50%;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 32px;
 }
 

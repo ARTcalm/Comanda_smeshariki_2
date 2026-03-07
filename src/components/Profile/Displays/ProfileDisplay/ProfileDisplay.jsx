@@ -5,8 +5,8 @@ import { useState } from "react"
 
 export const ProfileDisplay = (props) => {
 
-    const {orders, favoursItems, recentlyItems, handleFavours, handleAddCart, handleAddRecently} = props
-    let [animation,setAnimation] = useState(false)
+    const {orders, favoursItems, recentlyItems, handleFavours, handleAddCart, handleAddRecently,  cartItems,  plus, minus} = props
+
     return(
         <>
         <div className={style.profile}>
@@ -51,7 +51,7 @@ export const ProfileDisplay = (props) => {
             <h1 className={style.title}>Вы недавно смотрели</h1>
             <div className={style.recentlyTrack}>
                 {recentlyItems.map(item => (
-                    <Item item={item} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently}/>
+                    <Item item={item} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} cartItems={cartItems}  plus={plus} minus={minus} />
                 ))}
             </div>
         </div>

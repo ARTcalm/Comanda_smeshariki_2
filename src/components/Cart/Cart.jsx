@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import style from "./Cart.module.css"
-import { NavLink, Outlet } from "react-router"
+import { NavLink, Outlet, useNavigate } from "react-router"
 import { basename } from "../../consts"
 
 
@@ -13,7 +13,7 @@ export const Cart = (props) => {
     let counts = 0
     cartItems.forEach(el => summa += Number.parseFloat(el.price) * el.cartCount)
     cartItems.forEach(el => counts += el.cartCount)
-    
+    const navigate = useNavigate()
 
     return(
         <div className={style.cart_container}>
@@ -31,7 +31,7 @@ export const Cart = (props) => {
                         </div>
                         : cartItems.map(el => (
                             <div key={el.id} className={style.cart_card}>
-                                <img src={`${basename}${el.image}`} />
+                                <img src={`${basename}${el.image}`} onClick={() => navigate(`/product/${el.category}/${el.id}`)}/>
                                 <div className={style.card_desc}>
                                     <div className={style.card_title}>
                                         <h1>{el.name}</h1>
