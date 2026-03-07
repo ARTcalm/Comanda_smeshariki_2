@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { Greeting } from "../Greeting/Greeting"
 import { SlideBar } from "../SliderBar/SlideBar"
 import style from "./Catalog.module.css"
 import ReactPaginate from "react-paginate"
 import { Item } from "../Item/Item"
 import { Filters } from "../Filters/Filters"
+import { useLocation, useNavigate } from "react-router"
 
 
 
@@ -12,16 +13,40 @@ export const Catalog = (props) => {
 
     const {items, setItems, searchedItems, setSearchedItems, handleFavours, handleAddCart, handleAddRecently, plus, minus, cartItems} = props
 
+    const navigate = useNavigate();
+    const location = useLocation();
     const itemsPerPage = 20
-    const [itemOffset, setItemOffset] = useState(0)
-    const endOffset = itemOffset + itemsPerPage 
-    const currentItemsOnPage = searchedItems.slice(itemOffset, endOffset)
+    
+    const getPageFromUrl = useCallback(() => {
+        const params = new URLSearchParams(location.search);
+        const page = parseInt(params.get('page'), 10);
+        return isNaN(page) ? 0 : page - 1; // ReactPaginate использует 0-индексацию
+    }, [location.search]);
+    
+    const currentPage = getPageFromUrl();
+    const itemOffset = useMemo(() => 
+        currentPage * itemsPerPage,
+        [currentPage]
+    );
+    const endOffset = useMemo(() => 
+        itemOffset + itemsPerPage, 
+        [itemOffset]
+    );
+    const currentItemsOnPage = useMemo(() => 
+        searchedItems.slice(itemOffset, endOffset),
+        [searchedItems, itemOffset, endOffset]
+    );
+    const pageCount = useMemo(() => 
+        Math.ceil(searchedItems.length / itemsPerPage),
+        [searchedItems.length]
+    );
+    const handlePageClick = useCallback((event) => {
+        const params = new URLSearchParams(location.search);
+        params.set('page', event.selected + 1); // +1 для человеко-читаемого номера
+        navigate(`${location.pathname}?${params.toString()}`, { replace: true });
+    }, [navigate, location]);
 
-    const pageCount = Math.ceil(searchedItems.length/itemsPerPage)
-    const handlePageClick = (event) => {
-        const newOffset = (event.selected  * itemsPerPage) % items.length;
-        setItemOffset(newOffset);
-    };
+
     return(
         <>
             <Greeting />
@@ -51,6 +76,7 @@ export const Catalog = (props) => {
                 nextClassName={style.nextContainer}
                 breakClassName={style.break}
                 previousClassName={style.previousContainer}
+                forcePage={currentPage}
             />  
         </>
     )
