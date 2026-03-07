@@ -5,7 +5,7 @@ import { basename } from "../../consts"
 
 
 export const Cart = (props) => {
-    const {cartItems, setCartItems, handleFavours, DeleteCartItems,  plus, minus} = props
+    const {cartItems, setCartItems, handleFavours, handleAddRecently, DeleteCartItems,  plus, minus} = props
     
 
 
@@ -27,11 +27,11 @@ export const Cart = (props) => {
                         {cartItems.length === 0 ? 
                         <div className={style.nothing   }>
                             <h1>Ничего не найдено</h1>
-                            <NavLink to={"/"} style={{textDecoration:"none", background:"white", color:"black", padding:"20px 40px", borderRadius:"32px"}}>Перейти в каталог</NavLink>
+                            <NavLink to={"/"} style={{textDecoration:"none", background:"gainsboro", color:"black", padding:"20px 40px", borderRadius:"32px"}}>Перейти в каталог</NavLink>
                         </div>
                         : cartItems.map(el => (
                             <div key={el.id} className={style.cart_card}>
-                                <img src={`${basename}${el.image}`} onClick={() => navigate(`/product/${el.category}/${el.id}`)}/>
+                                <img  src={`${basename}${el.image}`} onClick={() => {navigate(`/product/${el.category}/${el.id}`), handleAddRecently(el)}}/>
                                 <div className={style.card_desc}>
                                     <div className={style.card_title}>
                                         <h1>{el.name}</h1>

@@ -20,7 +20,7 @@ export const Catalog = (props) => {
     const getPageFromUrl = useCallback(() => {
         const params = new URLSearchParams(location.search);
         const page = parseInt(params.get('page'), 10);
-        return isNaN(page) ? 0 : page - 1; // ReactPaginate использует 0-индексацию
+        return isNaN(page) ? 0 : page - 1; 
     }, [location.search]);
     
     const currentPage = getPageFromUrl();
@@ -42,7 +42,7 @@ export const Catalog = (props) => {
     );
     const handlePageClick = useCallback((event) => {
         const params = new URLSearchParams(location.search);
-        params.set('page', event.selected + 1); // +1 для человеко-читаемого номера
+        params.set('page', event.selected + 1);
         navigate(`${location.pathname}?${params.toString()}`, { replace: true });
     }, [navigate, location]);
 

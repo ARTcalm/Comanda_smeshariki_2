@@ -1,12 +1,13 @@
 .deliveryContainerBG{
     max-width: 1200px;
-    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    background: linear-gradient(45deg, #164e6b,#00a6ff);
     margin: 30px auto;
     border-radius: 32px;
     color: white;
     display: flex;
     flex-wrap: wrap;
     max-height: max-content;
+
 }
 
 .formTitle{
@@ -21,6 +22,7 @@
     display: flex;
     flex-wrap: wrap;
     max-height: max-content;
+    font-family: "Nissan Brand";
 }
 
 .form h1{
@@ -52,11 +54,15 @@
     outline: 0;
     border: 0;
     background: none;
-    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    background: linear-gradient(45deg, #164e6b,#00a6ff);
     color: white;
     border-radius: 32px;
     background-size: 400% 400%;
     animation: nothover 500ms ease forwards;
+}
+
+.label.error input{
+    border: 1px solid red;
 }
 
 .label input::placeholder{
@@ -72,7 +78,7 @@
     height: 200px;
     outline: 0;
     border-radius: 16px;
-    background: linear-gradient(-45deg, #378D5A, #74DC9E, #27332C);
+    background: linear-gradient(45deg, #164e6b,#00a6ff);
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -151,7 +157,7 @@
     gap: 10px;
     overflow-y: scroll;
     width: 100%;
-    height: 540px;
+    height: 575px;
     background: white;
     border-radius: 32px 0px 0 0;
     padding: 10px 0px;
@@ -162,14 +168,16 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 20px;
-    background: linear-gradient(-45deg, #378D5A, #27332C);
+    background: linear-gradient(45deg, #164e6b,#00a6ff);
     width: 100%;
     max-width: 80%;
     border-radius: 16px;
+    font-family: "Nissan Brand";
 }
 
 .trackCard img{
-    max-width: 60px;
+    width: 80px;
+    height: 100px;
     border-radius:10% ;
     margin-right: 20px;
 }
@@ -189,6 +197,35 @@
     }
 }
 
+.card_counter{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.card_counter p{
+    margin: 0;
+}
+
+.card_counter button{
+    background: none;
+    border: 0;
+    background: linear-gradient(-45deg, #004165,#0083CB);
+    color: white;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 150ms ease;
+}
+
+.card_counter button:active{
+    transform: scale(1.2);
+}
+
 @keyframes shake{
     0%{transform: rotate(0);}
     25%{transform: rotate(10deg);}
@@ -204,7 +241,7 @@
 
 
 .info{
-    background: #27332C;
+    background: #164e6b;
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
@@ -231,7 +268,7 @@
     border: 0;
     outline: 0;
     margin-bottom: 10px;
-    background: linear-gradient(-45deg, #378D5A,  #27332C);
+    background: linear-gradient(45deg, #164e6b,#00a6ff);
     color: white;
     padding: 10px 0;
     font-family: inherit;
@@ -243,6 +280,41 @@
     &:hover{
         animation: hover 500ms ease forwards  ;
     }
+}
+
+.checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.checkbox:checked {
+    background: #00a6ff;
+}
+.checkbox:checked::after {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.checkbox:hover {
+    background: gainsboro;
+}
+
+.checkbox:checked:hover {
+    opacity: 0.9;
+}
+
+.checkbox.error{
+    border-color: red;
 }
 
 @keyframes hover {
@@ -277,6 +349,7 @@
 .submit div p a{
     color: white;
 }
+
 
 
 @media (max-width:1200px) {
@@ -454,3 +527,5 @@
         width: 100%;
     }
 }
+
+

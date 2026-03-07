@@ -61,7 +61,6 @@ export const Header = (props) => {
                         <div className={style.searchBar} onMouseMove={() => setSearchActive(true)} onMouseLeave={() => setSearchActive(false)}>
                             <div className={style.searchInput} onClick={() => setSearchActive(true)} >
                                 <input onChange={handleChangeQuery} ref={searchInput} placeholder="ВВЕДИТЕ НАЗВАНИЕ ЗАПЧАСТИ"/>
-                                <svg  width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11.3953" cy="11.3953" r="10.8953" stroke="currentColor"/><line x1="27.6336" y1="28.3402" x2="19.1685" y2="19.2239" stroke="currentColor"/></svg>
                             </div>
                             {(displaySearch.length > 0 && searchActive ) && 
                             (

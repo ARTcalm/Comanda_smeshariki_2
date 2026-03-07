@@ -1,5 +1,6 @@
 import { useState } from "react"
 import style from "./Order.module.css"
+import { basename } from "../../../../../consts"
 
 export const Order = (props) => {
 
@@ -35,11 +36,11 @@ export const Order = (props) => {
                             {order.order.map(el => (
                             <tr className={style.itemsCard} >
                                 <td>{el.id}</td>
-                                <td><img src={el.img} /> </td>
+                                <td><img src={`${basename}${el.image}`} /> </td>
                                 <td style={{maxWidth:"150px"}}>{el.name}</td>
                                 <td>{el.price}₽</td>
-                                <td>{el.count}</td>
-                                <td>{el.count * el.price}₽</td>
+                                <td>{el.cartCount}</td>
+                                <td>{el.cartCount * el.price}₽</td>
                             </tr>
                             ))}
                         </table>
@@ -53,11 +54,11 @@ export const Order = (props) => {
                                     </div>
                                     <div className={style.floorNumField}>
                                         <p>Этаж</p>
-                                        <a>{order.floorNum}</a>
+                                        <a>{order.floorNum ? order.floorNum: "-"}</a>
                                     </div>
                                     <div className={style.apartNumField}>
                                         <p>Квартира</p>
-                                        <a>{order.apartNum}</a>
+                                        <a>{order.apartNum? order.apartNum: "-"}</a>
                                     </div>
                                 </div>
                             </div>
@@ -70,14 +71,14 @@ export const Order = (props) => {
                                     </div>
                                     <div className={style.emailField}>
                                         <p>Почта</p> 
-                                        <a>{order.email}</a>
+                                        <a>{order.email ? order.email : "-"}</a>
                                     </div>
                                 </div>
                             </div>
                             <div className={style.noticeInfo}>
                                 <h2>Примечание</h2>
                                 <div className={style.fields}>
-                                    <textarea disabled >{order.notice}</textarea>
+                                    <textarea disabled value={order.notice? order.notice : "Пусто"} ></textarea>
                                 </div>
                             </div>
                         </div>   

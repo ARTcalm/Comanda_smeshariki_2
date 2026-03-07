@@ -16,7 +16,7 @@ export const Contacts = () => {
                     <div className={style.contactInfo}>
                         <h1>Если у вас есть вопросы</h1>
                         <hr style={{width:"100%"}} />
-                        <p>Электронная почта: aplnmarket@gmail.com</p>
+                        <p>Электронная почта: NissanStore@gmail.com</p>
                         <p>Контактный телефон: +79826342801</p>
                     </div>
                 </div>
