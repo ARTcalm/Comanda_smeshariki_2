@@ -5,7 +5,7 @@ import { basename } from "../../consts"
 
 export const DeliveryForm = (props) => {
 
-    const {cartItems, DeleteCartItems, items, setItems, orders, setOrders, setCartItems,  plus, minus} = props
+    const {cartItems, DeleteCartItems, items, setItems, orders, orderStatuses, setOrders, setCartItems,  plus, minus} = props
     let summa = 0
     let counts = 0
     cartItems.forEach(el => summa += Number.parseFloat(el.price) * el.cartCount)
@@ -30,7 +30,7 @@ export const DeliveryForm = (props) => {
     }
 
     const [order, setOrder] = useState({
-        id: `#${generatorIDs(10)}`,
+        id: '',
         date:`${day < 10? `0${day}`:day}.${month < 10? `0${month}`:month}.${year}`,
         order:cartItems,
         street:'',
@@ -43,6 +43,7 @@ export const DeliveryForm = (props) => {
         agree:false,
         summa: summa,
         counts: counts,
+        status:"",
     })
 
     // Функция валидации полей
@@ -157,15 +158,10 @@ export const DeliveryForm = (props) => {
             alert("Необходимо согласие с условиями оформления заказа");
             return;
         }
-        
-        setOrder(order => {
-            return {...order, id:`#${generatorIDs(10)}`}
-        })
-        
-        setOrders(prev => {
-            const submitOrder = new Object(order) 
-            return [...prev, submitOrder]
-        })
+
+        const updateOrder = {...order, id:`#${generatorIDs(10)}`, status:"Оформлен" }
+        setOrder(updateOrder)
+        setOrders(prev => [...prev, updateOrder])
         
         cart.map(el => {
             setItems(items => {
@@ -181,7 +177,6 @@ export const DeliveryForm = (props) => {
         setCartItems([])
         navigate("/")
         alert("Заказ успешно оформлен")
-        console.log(items)
     }
 
     const handleChange = (e) => {

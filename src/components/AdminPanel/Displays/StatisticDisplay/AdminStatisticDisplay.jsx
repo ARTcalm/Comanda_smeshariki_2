@@ -1,53 +1,59 @@
 import style from "./AdminStatisticDisplay.module.css"
 
-export const AdminStatisticDisplay = () => {
+export const AdminStatisticDisplay = (props) => {
     
+    const {items, cartItems, orders, favoursItems} = props
+
+    const totalItems = items.reduce((sum, item) => sum + (item.storage || 0), 0);
+    const lowStock = items.filter(item => item.storage > 0 && item.storage < 10).length;
+    const outOfStock = items.filter(item => item.storage === 0).length;
+
     const stats = {
-        totalProducts: 245,
-        inCarts: 89,
-        inFavorites: 156,
-        activeOrders: 23,
-        completedOrders: 178,
-        totalItems: 3450,
-        lowStock: 34,
-        outOfStock: 12
+        totalProducts: items.length,
+        inCarts: cartItems.length,
+        inFavorites: favoursItems.length,
+        activeOrders: orders.filter(order => order.status !== 'Выполнен').length,
+        completedOrders: orders.filter(order => order.status === 'Выполнен').length,
+        totalItems: totalItems,
+        lowStock: lowStock,
+        outOfStock: outOfStock
     };
 
     return(
-    <div className="statistics-page">
+    <div className={style.statisticPage}>
         <h1>Статистика</h1>
-        <div className="stats-grid">
-            <div className="stat-card">
-            <span className="stat-label">Товаров всего</span>
-            <span className="stat-value">{stats.totalProducts}</span>
+        <div className={style.statsGrid}>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>Товаров всего</span>
+                <span className={style.statValue}>{stats.totalProducts}</span>
             </div>
-            <div className="stat-card">
-            <span className="stat-label">В корзинах</span>
-            <span className="stat-value">{stats.inCarts}</span>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>В корзинах</span>
+                <span className={style.statValue}>{stats.inCarts}</span>
             </div>
-            <div className="stat-card">
-            <span className="stat-label">В избранном</span>
-            <span className="stat-value">{stats.inFavorites}</span>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>В избранном</span>
+                <span className={style.statValue}>{stats.inFavorites}</span>
             </div>
-            <div className="stat-card">
-            <span className="stat-label">Активные заказы</span>
-            <span className="stat-value">{stats.activeOrders}</span>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>Активные заказы</span>
+                <span className={style.statValue}>{stats.activeOrders}</span>
             </div>
-            <div className="stat-card">
-            <span className="stat-label">Выполненные заказы</span>
-            <span className="stat-value">{stats.completedOrders}</span>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>Выполненные заказы</span>
+                <span className={style.statValue}>{stats.completedOrders}</span>
             </div>
-            <div className="stat-card">
-            <span className="stat-label">Единиц товара</span>
-            <span className="stat-value">{stats.totalItems}</span>
+            <div className={style.statCard}>
+                <span className={style.statLabel}>Единиц товара</span>
+                <span className={style.statValue}>{stats.totalItems}</span>
             </div>
-            <div className="stat-card warning">
-            <span className="stat-label">Заканчиваются</span>
-            <span className="stat-value">{stats.lowStock}</span>
+            <div className={`${style.statCard} ${style.warning}`}>
+                <span className={style.statLabel}>Заканчиваются</span>
+                <span className={style.statValue}>{stats.lowStock}</span>
             </div>
-            <div className="stat-card danger">
-            <span className="stat-label">Закончились</span>
-            <span className="stat-value">{stats.outOfStock}</span>
+            <div className={`${style.statCard} ${style.danger}`}>
+                <span className={style.statLabel}>Закончились</span>
+                <span className={style.statValue}>{stats.outOfStock}</span>
             </div>
         </div>
     </div>

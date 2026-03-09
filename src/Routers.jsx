@@ -27,6 +27,7 @@ export const Routers = () => {
     const [favoursItems, setFavoursItems] = useState([])
     const [recentlyItems, setRecentlyItems] = useState([])
     const [orders, setOrders] = useState([])
+    const orderStatuses = ["Оформлен","Отменён","В обработке","Доставляется","Выполнен"]
     const location = useLocation()
 
 
@@ -175,15 +176,15 @@ export const Routers = () => {
                 </Route>
                 <Route path={"cart"}>
                     <Route index element={<Cart cartItems={cartItems} handleFavours={handleFavours} handleAddRecently={handleAddRecently} DeleteCartItems={DeleteCartItems} plus={plus} minus={minus} />} />
-                    <Route path={"delivery-form"} element={<DeliveryForm orders={orders} setOrders={setOrders} cartItems={cartItems} items={items} setCartItems={setCartItems} setItems={setItems}  plus={plus} minus={minus} DeleteCartItems={DeleteCartItems}/>} />
+                    <Route path={"delivery-form"} element={<DeliveryForm orders={orders} setOrders={setOrders} orderStatuses={orderStatuses} cartItems={cartItems} items={items} setCartItems={setCartItems} setItems={setItems}  plus={plus} minus={minus} DeleteCartItems={DeleteCartItems}/>} />
                     <Route path={"*"} element={<div>NICHEGO</div>} />
                 </Route>
                 <Route path={"favours"} element={<Favours favoursItems={favoursItems} cartItems={cartItems} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} plus={plus} minus={minus} />} />
                 <Route path={"admin"} element={<AdminPanel />}>
-                    <Route index element={<AdminStatisticDisplay items={items} cartItems={cartItems} orders={orders} />} />
-                    <Route path={"goods"} element={<AdminGoodsDisplay />} />
-                    <Route path={"orders"} element={<AdminOrdersDisplay />} />
-                    <Route path={"categories"} element={<AdminCategoriesDisplay />} />
+                    <Route index element={<AdminStatisticDisplay items={items} cartItems={cartItems} orders={orders} favoursItems={favoursItems} />} />
+                    <Route path={"goods"} element={<AdminGoodsDisplay items={items} />} />
+                    <Route path={"orders"} element={<AdminOrdersDisplay orders={orders} setOrders={setOrders} orderStatuses={orderStatuses} />} />
+                    <Route path={"categories"} element={<AdminCategoriesDisplay items={items} />} />
                 </Route>
                 <Route path={"*"} element={<div>NICHEGO</div>} />
             </Routes>

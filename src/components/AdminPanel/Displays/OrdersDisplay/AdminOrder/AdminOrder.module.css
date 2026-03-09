@@ -16,22 +16,35 @@
     gap: 20px;
 }
 
-.status{
+.statusSelect{
+    appearance: none;
+    border: 0;
+    outline: 0;
     background: white;
     color: black;
+    text-align: center;
     padding: 5px 10px;
     border-radius: 16px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
 }
 
-.status.complete{
+.statusSelect.complete{
     background: green;
     color: white;
 }
 
-.status.cancel{
+.statusSelect.cancel{
     background: red;
     color: white;
 }
+
+.statusSelect option{
+    background: white;
+    color: black;
+    border-radius: 16px;
+}
+
 
 .chevron{
     z-index: 999;
@@ -45,9 +58,6 @@
 .chevron.noactive{
     transform: rotate(0deg);
 }
-
-
-
 
 .orderItemsContainer{
     display: flex;

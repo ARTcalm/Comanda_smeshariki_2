@@ -1,10 +1,10 @@
-.stats-grid {
+.statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 
-.stat-card {
+.statCard {
   background: white;
   padding: 25px;
   border-radius: 8px;
@@ -13,29 +13,29 @@
   transition: transform 0.3s;
 }
 
-.stat-card:hover {
+.statCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.stat-card.warning {
+.statCard.warning {
   background: #fff3cd;
   border-left: 4px solid #ffc107;
 }
 
-.stat-card.danger {
+.statCard.danger {
   background: #f8d7da;
   border-left: 4px solid #dc3545;
 }
 
-.stat-label {
+.statLabel {
   display: block;
   color: #7f8c8d;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-.stat-value {
+.statValue {
   display: block;
   color: #2c3e50;
   font-size: 32px;

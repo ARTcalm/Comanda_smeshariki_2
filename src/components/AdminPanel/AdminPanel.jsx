@@ -4,20 +4,19 @@ import { useState } from 'react';
 
 export const AdminPanel = () => {
 
-    let [indexNav, setIndexNav] = useState(0)
 
     return (
         <div className={style.adminContainer}>
             <aside className={style.menuSidebar}>
                 <nav className={style.nav}>
-                <NavLink onClick={() => setIndexNav(0)} to={""} className={indexNav === 0 ? `${style.link} ${style.active}` : style.link}>Статистика</NavLink>
-                <NavLink onClick={() => setIndexNav(1)} to={"goods"} className={indexNav === 1 ? `${style.link} ${style.active}` : style.link}>Товары</NavLink>
-                <NavLink onClick={() => setIndexNav(2)} to={"orders"} className={indexNav === 2 ? `${style.link} ${style.active}` : style.link}>Заказы</NavLink>
-                <NavLink onClick={() => setIndexNav(3)} to={"categories"} className={indexNav === 3 ? `${style.link} ${style.active}` : style.link}>Категории</NavLink>
+                <NavLink to={"/admin/"} end={true} className={({isActive}) => `${style.link} ${isActive ? style.active: ""}`} >Статистика</NavLink>
+                <NavLink to={"/admin/goods"}  className={({isActive}) => `${style.link} ${isActive ? style.active: ""}`} >Товары</NavLink>
+                <NavLink to={"/admin/orders"} className={({isActive}) => `${style.link} ${isActive ? style.active: ""}`}>Заказы</NavLink>
+                <NavLink to={"/admin/categories"} className={({isActive}) => `${style.link} ${isActive ? style.active: ""}`}>Категории</NavLink>
                 </nav>
             </aside>
             <div className={style.display}>
-            <Outlet />
+                <Outlet />  
             </div>
         </div>
     )

@@ -11,6 +11,7 @@ export const Profile = (props) => {
                     <NavLink to={""} className={style.buttonMenu} >Профиль</NavLink>
                     <NavLink to={"orders"} className={style.buttonMenu} >Заказы</NavLink>
                     <NavLink to={"favours"} className={style.buttonMenu} >Избранное</NavLink>
+                    <NavLink to={"/admin/"}className={style.buttonMenu}>Админ панель</NavLink>
                 </div>
                 <div className={style.display}>
                     <Outlet />

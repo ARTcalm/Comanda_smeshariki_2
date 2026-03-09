@@ -1,12 +1,29 @@
 import { useState } from "react"
-import style from "./Order.module.css"
+import style from "./AdminOrder.module.css"
 import { basename } from "../../../../../consts"
 
-export const Order = (props) => {
+export const AdminOrder = (props) => {
 
-    const {order} = props
+    const {order, orders, setOrders, orderStatuses} = props
     let [showFullOrder, setShowFullOrder] = useState(false)
 
+    const handleChangeStatus = event => {
+        const value = event.target.value
+        if(confirm("Вы уверены что хотите изменить статус?")){
+            setOrders(orders => {
+                return orders.map(prevOrder => {
+                    if(prevOrder.id === order.id){
+                        return {...prevOrder, status:value}
+                    }
+                    return prevOrder
+                })
+            })
+        }
+        else{
+            event.target.value = order.status
+        }
+        console.log(orders)
+    }
 
     return(
         <>
@@ -14,7 +31,11 @@ export const Order = (props) => {
                 <div className={style.topPanel}>
                     <div>
                         <p>Номер заказа: {order.id}</p>
-                        <p className={`${style.status} ${order.status === "Выполнен"? style.complete : order.status === "Отменён" ? style.cancel : ""}`} >{order.status}</p>
+                        <select className={`${style.statusSelect} ${order.status === "Выполнен"? style.complete : order.status === "Отменён" ? style.cancel : ""}`} onChange={handleChangeStatus}>
+                            {orderStatuses.map((status, index) => (
+                                <option key={index} value={status}  selected={status === order.status? true : false} >{status}</option>
+                            ))}
+                        </select>
                     </div>
                     <div>
                         <p>Дата заказа: {order.date}</p>
