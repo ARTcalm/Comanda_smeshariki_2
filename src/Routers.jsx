@@ -182,7 +182,7 @@ export const Routers = () => {
                 <Route path={"favours"} element={<Favours favoursItems={favoursItems} cartItems={cartItems} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} plus={plus} minus={minus} />} />
                 <Route path={"admin"} element={<AdminPanel />}>
                     <Route index element={<AdminStatisticDisplay items={items} cartItems={cartItems} orders={orders} favoursItems={favoursItems} />} />
-                    <Route path={"goods"} element={<AdminGoodsDisplay items={items} />} />
+                    <Route path={"goods"} element={<AdminGoodsDisplay items={items} setItems={setItems} />} />
                     <Route path={"orders"} element={<AdminOrdersDisplay orders={orders} setOrders={setOrders} orderStatuses={orderStatuses} />} />
                     <Route path={"categories"} element={<AdminCategoriesDisplay items={items} />} />
                 </Route>

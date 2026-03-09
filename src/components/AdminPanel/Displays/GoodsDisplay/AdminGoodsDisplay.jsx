@@ -1,9 +1,9 @@
-import { basename } from "../../../../consts"
 import style from "./AdminGoodsDisplay.module.css"
+import { GoodCard } from "./GoodCard"
 
 export const AdminGoodsDisplay = (props) => {
     
-    const {items} = props
+    const {items, setItems} = props
 
     return(
     <>
@@ -25,18 +25,7 @@ export const AdminGoodsDisplay = (props) => {
             </thead>
             <tbody>
                 {items.map(item => (
-                <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td><img src={`${basename}${item.image}`} alt={item.name} className={style.itemThumb} /></td>
-                    <td>{item.name}</td>
-                    <td>{item.carModel}</td>
-                    <td>{item.category}</td>
-                    <td>{item.price} ₽</td>
-                    <td>{item.storage}</td>
-                    <td>
-                    <button className={style.actionBtn}>Изменить количество</button>
-                    </td>
-                </tr>
+                    <GoodCard item={item} setItems={setItems} />
                 ))}
             </tbody>
             </table>
