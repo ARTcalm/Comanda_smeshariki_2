@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 @font-face {
     font-family:'Widock TRIAL';
-    src: local('Widock TRIAL'), url('/CommandWorks/CP2/fonts/Widock TRIAL Bold.otf') format('otf');
+    src: local('Widock TRIAL'), url('/fonts/Widock TRIAL Bold.otf') format('otf');
 }
 
 @font-face {
     font-family: "KOT Eitai";
-    src: local('KOT Eitai'), url('/CommandWorks/CP2/fonts/KOT Eitai.ttf') format('truetype');
+    src: local('KOT Eitai'), url('/fonts/KOT Eitai.ttf') format('truetype');
 }
 
 @font-face{
     font-family: "Nissan Brand";
-    src: local('Nissan Brand'), url('/CommandWorks/CP2/fonts/nissanbrand_bold.otf') format('otf');  
+    src: local('Nissan Brand'), url('/fonts/nissanbrand_bold.otf') format('otf');  
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face{
     font-family: "Nissan Brand";
-    src: local('Nissan Brand'), url('/CommandWorks/CP2/fonts/nissanbrand_regular.otf') format('otf');  
+    src: local('Nissan Brand'), url('/fonts/nissanbrand_regular.otf') format('otf');  
     font-weight: 400;
     font-style: normal;
 }

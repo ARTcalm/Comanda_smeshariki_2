@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base:"/CommandWorks/CP2/",
+  base:"ARTcalm.github.io/Comanda_smeshariki_2/",
   plugins: [react()],
 })
