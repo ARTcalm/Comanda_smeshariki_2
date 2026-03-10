@@ -4,6 +4,10 @@
   gap: 20px;
 }
 
+.statsGrid a{
+  text-decoration: none;
+}
+
 .statCard {
   background: white;
   padding: 25px;

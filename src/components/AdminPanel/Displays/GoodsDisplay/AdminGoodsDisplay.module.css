@@ -30,16 +30,35 @@
 }
 
 .adminTable td input{
+    font-family: "Montserrat", sans-serif;
     outline: 0;
     border: 0;
     border: 1px solid black;
     border-radius: 16px;
     padding: 5px 0px 5px 10px;
-    max-width: 100px;
+    max-width: 25px;
 }
 
 .adminTable tr:hover {
     background: #f8f9fa;
+}
+
+.good{
+    transition: all 300ms ease;
+}
+
+.good.warning{
+    background: rgba(255, 255, 0, 0.200);
+    &:hover{
+        background: rgba(255, 255, 0, 1);
+    }
+}
+
+.good.ended{
+    background: rgba(255, 0, 0, 0.200);
+    &:hover{
+        background: rgba(255, 0, 0, 1);
+    }
 }
 
 .itemThumb {

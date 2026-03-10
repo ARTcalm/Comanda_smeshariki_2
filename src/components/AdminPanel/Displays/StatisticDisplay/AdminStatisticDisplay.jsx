@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import style from "./AdminStatisticDisplay.module.css"
 
 export const AdminStatisticDisplay = (props) => {
@@ -47,14 +48,18 @@ export const AdminStatisticDisplay = (props) => {
                 <span className={style.statLabel}>Единиц товара</span>
                 <span className={style.statValue}>{stats.totalItems}</span>
             </div>
-            <div className={`${style.statCard} ${style.warning}`}>
-                <span className={style.statLabel}>Заканчиваются</span>
-                <span className={style.statValue}>{stats.lowStock}</span>
-            </div>
-            <div className={`${style.statCard} ${style.danger}`}>
-                <span className={style.statLabel}>Закончились</span>
-                <span className={style.statValue}>{stats.outOfStock}</span>
-            </div>
+            <Link to={"/admin/ending-goods"}>
+                <div className={`${style.statCard} ${style.warning}`}>
+                    <span className={style.statLabel}>Заканчиваются</span>
+                    <span className={style.statValue}>{stats.lowStock}</span>
+                </div>
+            </Link>
+            <Link to={"/admin/ended-goods"}>
+                <div className={`${style.statCard} ${style.danger}`}>
+                    <span className={style.statLabel}>Закончились</span>
+                    <span className={style.statValue}>{stats.outOfStock}</span>
+                </div>
+            </Link>
         </div>
     </div>
     )

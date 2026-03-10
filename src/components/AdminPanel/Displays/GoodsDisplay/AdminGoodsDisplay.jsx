@@ -24,8 +24,8 @@ export const AdminGoodsDisplay = (props) => {
                 </tr>
             </thead>
             <tbody>
-                {items.map(item => (
-                    <GoodCard item={item} setItems={setItems} />
+                {items.map((item) => (
+                    <GoodCard key={item.id} item={item} items={items} setItems={setItems} />
                 ))}
             </tbody>
             </table>

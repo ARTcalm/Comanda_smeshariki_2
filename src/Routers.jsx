@@ -180,9 +180,11 @@ export const Routers = () => {
                     <Route path={"*"} element={<div>NICHEGO</div>} />
                 </Route>
                 <Route path={"favours"} element={<Favours favoursItems={favoursItems} cartItems={cartItems} handleFavours={handleFavours} handleAddCart={handleAddCart} handleAddRecently={handleAddRecently} plus={plus} minus={minus} />} />
-                <Route path={"admin"} element={<AdminPanel />}>
+                <Route path={"admin"} element={<AdminPanel items={items} />}>
                     <Route index element={<AdminStatisticDisplay items={items} cartItems={cartItems} orders={orders} favoursItems={favoursItems} />} />
                     <Route path={"goods"} element={<AdminGoodsDisplay items={items} setItems={setItems} />} />
+                    <Route path={"ending-goods"} element={<AdminGoodsDisplay items={items.filter(item => item.storage > 0 && item.storage < 10)} setItems={setItems} />} />
+                    <Route path={"ended-goods"} element={<AdminGoodsDisplay items={items.filter(item => item.storage === 0)} setItems={setItems} />} />
                     <Route path={"orders"} element={<AdminOrdersDisplay orders={orders} setOrders={setOrders} orderStatuses={orderStatuses} />} />
                     <Route path={"categories"} element={<AdminCategoriesDisplay items={items} />} />
                 </Route>
